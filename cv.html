@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Carlo Alberto Giordano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary:  #2C1810;
+            --accent:   #B8753A;
+            --accent2:  #7A4520;
+            --light:    #E8D5B7;
+            --text:     #1A0E08;
+            --muted:    #4a3828;
+            --sidebar-w: 67mm;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 9pt;
+            color: var(--text);
+            background: #c8b49a;
+        }
+
+        /* ─── PAGE ──────────────────────────────────────────── */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            display: flex;
+            margin: 0 auto;
+        }
+
+        /* ─── SIDEBAR ───────────────────────────────────────── */
+        .sidebar {
+            width: var(--sidebar-w);
+            background: var(--primary);
+            color: white;
+            padding: 16px 14px 16px 14px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.06;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        .sidebar-name {
+            font-size: 14.5pt;
+            font-weight: 800;
+            font-family: 'Playfair Display', Georgia, serif;
+            line-height: 1.15;
+            color: white;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-role {
+            font-size: 7.5pt;
+            color: #C8914A;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .sidebar-divider {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .sidebar-section-title {
+            font-size: 6.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #C8914A;
+            border-bottom: 1px solid rgba(200,145,74,0.35);
+            padding-bottom: 3px;
+            margin-bottom: 7px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 5px;
+            margin-bottom: 5px;
+            font-size: 7pt;
+            color: rgba(255,255,255,0.88);
+            line-height: 1.4;
+        }
+        .contact-icon { flex-shrink: 0; width: 10px; text-align: center; color: #C8914A; margin-top: 1px; }
+
+        .lang-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 7.5pt;
+            margin-bottom: 4px;
+        }
+        .lang-name { color: rgba(255,255,255,0.9); }
+        .lang-level { color: #C8914A; font-size: 7pt; }
+
+        .skill-group { margin-bottom: 5px; }
+        .skill-group-name { font-size: 6.5pt; color: #C8914A; font-weight: 700; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
+        .skill-group-items { font-size: 7pt; color: rgba(255,255,255,0.82); line-height: 1.55; }
+
+        /* ─── MAIN CONTENT ──────────────────────────────────── */
+        .main {
+            flex: 1;
+            padding: 13px 16px 10px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .section-title {
+            font-size: 7.5pt;
+            font-weight: 700;
+            font-family: 'Playfair Display', Georgia, serif;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 2px;
+            margin-bottom: 5px;
+        }
+
+        /* Profile */
+        .profile-text {
+            font-size: 7pt;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        /* Entry (education / work / project) */
+        .entry { margin-bottom: 5px; }
+        .entry:last-child { margin-bottom: 0; }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .entry-title { font-size: 8pt; font-weight: 700; font-family: 'Playfair Display', Georgia, serif; color: var(--primary); }
+        .entry-date  { font-size: 6.5pt; color: #777; white-space: nowrap; flex-shrink: 0; }
+        .entry-sub   { font-size: 7pt; color: var(--accent2); margin-top: 1px; }
+        .entry-desc  { font-size: 7pt; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+
+        .entry-bullets {
+            margin-top: 2px;
+            padding-left: 11px;
+            list-style: disc;
+        }
+        .entry-bullets li {
+            font-size: 7pt;
+            color: var(--muted);
+            margin-bottom: 0px;
+            line-height: 1.35;
+        }
+
+        /* Project tags */
+        .tags { margin-top: 2px; }
+        .tag {
+            display: inline-block;
+            background: var(--light);
+            color: var(--accent);
+            font-size: 5.5pt;
+            font-weight: 700;
+            padding: 1px 4px;
+            border-radius: 3px;
+            margin-right: 3px;
+            margin-top: 1px;
+        }
+
+        /* Soft skills */
+        .trasversali-block { margin-bottom: 5px; }
+        .trasversali-block:last-child { margin-bottom: 0; }
+        .trasversali-type { font-size: 7.5pt; font-weight: 700; color: var(--primary); margin-bottom: 1px; }
+        .trasversali-text { font-size: 7pt; color: var(--muted); line-height: 1.4; }
+
+        /* Privacy + Signature */
+        .privacy {
+            font-size: 6pt;
+            color: #999;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 6px;
+            line-height: 1.5;
+            margin-top: auto;
+            display: flex;
+            align-items: flex-end;
+            gap: 14px;
+        }
+        .privacy-text { flex: 1; }
+
+        .signature-box { text-align: center; flex-shrink: 0; }
+        .signature-line {
+            width: 52mm;
+            border-bottom: 1px solid #aaa;
+            height: 18px;
+            margin-bottom: 2px;
+        }
+        .signature-label { font-size: 6.5pt; color: #888; }
+
+        /* ─── SCREEN ONLY ───────────────────────────────────── */
+        @media screen {
+            .entry {
+                border-radius: 3px;
+                padding: 3px 6px;
+                margin-left: -6px;
+                transition: background 0.15s, border-left 0.15s;
+            }
+            .entry:hover {
+                background: rgba(184, 117, 58, 0.07);
+                border-left: 2px solid var(--accent);
+                padding-left: 8px;
+            }
+        }
+
+        /* ─── PRINT ─────────────────────────────────────────── */
+        @media print {
+            body { background: white; }
+            .page { margin: 0; }
+            * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            .entry { border-left: none !important; background: none !important; padding: 3px 0 !important; margin-left: 0 !important; }
+            .sidebar::after { display: none; }
+
+            /* Sidebar chiara per stampa — meno inchiostro, più leggibile */
+            .sidebar { background: #f0e6d4 !important; }
+            .sidebar-name { color: #2C1810 !important; }
+            .sidebar-role { color: #7A4520 !important; }
+            .sidebar-divider { border-top-color: rgba(44,24,16,0.2) !important; }
+            .sidebar-section-title { color: #7A4520 !important; border-bottom-color: rgba(122,69,32,0.3) !important; }
+            .contact-item { color: #2C1810 !important; }
+            .contact-icon { color: #B8753A !important; }
+            .lang-name { color: #2C1810 !important; }
+            .lang-level { color: #7A4520 !important; }
+            .skill-group-name { color: #7A4520 !important; }
+            .skill-group-items { color: #3a2010 !important; }
+        }
+
+        @page { size: A4; margin: 0; }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- ══ SIDEBAR ══════════════════════════════════════════ -->
+    <div class="sidebar">
+
+        <div>
+            <div class="sidebar-name">Carlo Alberto<br>Giordano</div>
+            <div class="sidebar-role">Laureando in Sicurezza Informatica</div>
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <!-- Contatti -->
+        <div>
+            <div class="sidebar-section-title">Contatti</div>
+            <div class="contact-item">
+                <span class="contact-icon">✉</span>
+                <span>carloalbertogiordano@duck.com</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">☎</span>
+                <span>(+39) 371 4197517</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">in</span>
+                <span>linkedin.com/in/carlo-alberto-<br>giordano-8b823b276</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">⌥</span>
+                <span>github.com/carloalbertogiordano</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">⌂</span>
+                <span>Via Matese SNC — 81016 Campania, IT</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">◎</span>
+                <span>29 Settembre 2001 — Italiana</span>
+            </div>
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <!-- Lingue -->
+        <div>
+            <div class="sidebar-section-title">Lingue</div>
+            <div class="lang-row"><span class="lang-name">Italiano</span><span class="lang-level">Madrelingua</span></div>
+            <div class="lang-row"><span class="lang-name">Inglese</span><span class="lang-level">C1 — Avanzato</span></div>
+            <div class="lang-row"><span class="lang-name">Greco</span><span class="lang-level">Base</span></div>
+            <div class="lang-row"><span class="lang-name">Esperanto</span><span class="lang-level">Base</span></div>
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <!-- Competenze tecniche -->
+        <div>
+            <div class="sidebar-section-title">Competenze Tecniche</div>
+
+            <div class="skill-group">
+                <div class="skill-group-name">Linguaggi</div>
+                <div class="skill-group-items">C · Assembly (x86) · Python<br>Rust · Java · Bash / Shell</div>
+            </div>
+
+            <div class="skill-group">
+                <div class="skill-group-name">Sicurezza informatica</div>
+                <div class="skill-group-items">Firmware Reverse Engineering<br>Cryptanalysis (known/chosen plaintext)<br>HID / BadUSB attacks<br>SAT/SMT · Data Privacy Auditing<br>Binary exploitation (CTF)</div>
+            </div>
+
+            <div class="skill-group">
+                <div class="skill-group-name">Offensive / RE / Forensics</div>
+                <div class="skill-group-items">nmap · Zenmap · Metasploit<br>Hashcat · John the Ripper · bkcrack<br>Wireshark · tcpdump<br>Ghidra · Volatility</div>
+            </div>
+
+            <div class="skill-group">
+                <div class="skill-group-name">Infrastruttura</div>
+                <div class="skill-group-items">Proxmox VE · PBS · TrueNAS<br>Linux (admin) · Virtualizzazione<br>CrowdSec · Fail2ban · Semaphore</div>
+            </div>
+
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <!-- Certificazioni -->
+        <div>
+            <div class="sidebar-section-title">Certificazioni</div>
+            <div class="skill-group-items">Certificato Inglese C1<br>
+                <span style="color:#C8914A;font-size:6.5pt">Acquisito in Irlanda</span>
+            </div>
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <!-- Interessi -->
+        <div>
+            <div class="sidebar-section-title">Interessi</div>
+            <div class="skill-group-name">Tecnici</div>
+            <div class="skill-group-items" style="margin-bottom:6px">
+                Comunicazione decentralizzata<br>
+                Sicurezza embedded &amp; firmware<br>
+                OS development a basso livello<br>
+                Homelab &amp; self-hosting
+            </div>
+            <div class="skill-group-name">Personali</div>
+            <div class="skill-group-items">
+                Lavorazione pelle &amp; sartoria
+            </div>
+        </div>
+
+    </div><!-- /sidebar -->
+
+    <!-- ══ MAIN ══════════════════════════════════════════════ -->
+    <div class="main">
+
+        <!-- Profilo -->
+        <div class="section">
+            <div class="section-title">Profilo</div>
+            <div class="profile-text">
+                Laureando magistrale in Sicurezza Informatica all'Università di Salerno. Il mio approccio alla sicurezza muove sempre dai livelli più bassi: capire le vulnerabilità nel firmware prima di quelle dei protocolli, sviluppare sistemi embedded per testare i limiti dell'hardware, gestire infrastrutture reali in produzione per capire cosa significa veramente interagire con un cliente. Affianco agli studi un'attività continuativa di consulenza IT e la gestione autonoma di un cluster Proxmox in produzione.
+            </div>
+        </div>
+
+        <!-- Istruzione -->
+        <div class="section">
+            <div class="section-title">Istruzione e Formazione</div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Laurea Magistrale — Informatica</div>
+                    <div class="entry-date">2023 – in corso</div>
+                </div>
+                <div class="entry-sub">Università degli Studi di Salerno · LM-18 · Curriculum Sicurezza Informatica</div>
+                <div class="entry-desc">
+                    Tesi: <em>Fixedness</em> — framework per la valutazione empirica del rischio di ricostruzione logica di record sensibili in dataset anonimizzati, tramite riduzione a istanze SAT/SMT su strutture di vincoli relazionali. Valutato su 10 tecniche di anonimizzazione e 4 assi parametrici.
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Laurea Triennale — Informatica</div>
+                    <div class="entry-date">2020 – 2023</div>
+                </div>
+                <div class="entry-sub">Università degli Studi di Salerno</div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Diploma — Scienze Applicate</div>
+                    <div class="entry-date">2016 – 2020</div>
+                </div>
+                <div class="entry-sub">Liceo Scientifico G. Galilei — Piedimonte Matese (CE)</div>
+            </div>
+        </div>
+
+        <!-- Esperienze -->
+        <div class="section">
+            <div class="section-title">Esperienze Lavorative</div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Consulente IT &amp; Gestione Sistemi</div>
+                    <div class="entry-date">2018 – in corso</div>
+                </div>
+                <div class="entry-sub">Giordano Moda — Piedimonte Matese (CE)</div>
+                <ul class="entry-bullets">
+                    <li>Sviluppo e manutenzione di software gestionale e automazioni in Python e Bash</li>
+                    <li>Integrazione di flussi AI nei processi aziendali tramite software sviluppato ad hoc</li>
+                    <li>Automazione di workflow operativi; gestione del cluster Proxmox in produzione a supporto dell'infrastruttura aziendale</li>
+                    <li>Gestione database e ottimizzazione flussi informativi interni</li>
+                    <li>Formazione e supporto tecnico al personale; interfaccia diretta con clienti</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Analisi Flussi Produttivi</div>
+                    <div class="entry-date">Estate 2022 – 2025</div>
+                </div>
+                <div class="entry-sub">Specialcorde srl — Gioia Sannitica (CE)</div>
+                <ul class="entry-bullets">
+                    <li>Mappatura e analisi dei processi produttivi aziendali</li>
+                    <li>Identificazione di colli di bottiglia e proposta di azioni correttive</li>
+                    <li>Partecipazione alle riunioni operative con la direzione aziendale</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Progetti -->
+        <div class="section">
+            <div class="section-title">Progetti</div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Fixedness — Data Privacy Auditing Framework</div>
+                    <div class="entry-date">in corso</div>
+                </div>
+                <div class="entry-desc">Misura il rischio di ricostruzione logica di record sensibili in dataset anonimizzati, via riduzione SAT/SMT e detection di leak deterministici (co-NP UNSAT). Valutato su 10 tecniche di anonimizzazione. Sviluppato in coordinamento con il Prof. Ugo Fiore (Dip. Informatica, UNISA), con testing su server ad alte prestazioni del dipartimento.</div>
+                <div class="tags">
+                    <span class="tag">Python</span><span class="tag">SAT/SMT</span><span class="tag">Data Privacy</span><span class="tag">Research</span>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Mazda Firmware Decryption</div>
+                    <div class="entry-date">2024</div>
+                </div>
+                <div class="entry-desc">Reverse engineering del firmware di un veicolo Mazda: exploit della cifratura ZipCrypto tramite known-plaintext attack (bkcrack). Documentata la vulnerabilità e l'intera procedura di decifrazione.</div>
+                <div class="tags">
+                    <span class="tag">Firmware RE</span><span class="tag">Cryptanalysis</span><span class="tag">ZipCrypto</span>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">OS Development</div>
+                    <div class="entry-date">2023 – 2024</div>
+                </div>
+                <div class="entry-desc">Kernel bare-metal in C, Assembly x86 e Rust: bootloader, memory management, interrupt handling. Sviluppati per comprensione profonda delle superfici di attacco a livello hardware.</div>
+                <div class="tags">
+                    <span class="tag">C</span><span class="tag">Assembly x86</span><span class="tag">Rust</span><span class="tag">OS Dev</span>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Proxmox Homelab Cluster</div>
+                    <div class="entry-date">2024 – in corso</div>
+                </div>
+                <div class="entry-desc">Progettazione e gestione di un cluster Proxmox in produzione: storage distribuito, networking avanzato, automation con Semaphore. Usato sia per l'attività aziendale familiare che per lab personale.</div>
+                <div class="tags">
+                    <span class="tag">Proxmox</span><span class="tag">Shell</span><span class="tag">Infrastructure</span><span class="tag">Automation</span>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">tinyLlamaServer — Local AI Hub</div>
+                    <div class="entry-date">2026</div>
+                </div>
+                <div class="entry-desc">Hub AI multimodale self-hosted su llama.cpp, whisper.cpp e ncnn: LLM, trascrizione audio e TTS con accelerazione Vulkan su GPU Intel, AMD e NVIDIA. Compatibile nativamente con OpenAI e Ollama API, con conversione automatica da Hugging Face Safetensors a GGUF. Zero dipendenze cloud.</div>
+                <div class="tags">
+                    <span class="tag">Python</span><span class="tag">llama.cpp</span><span class="tag">Vulkan</span><span class="tag">AI</span><span class="tag">Self-hosting</span>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">ArduinoRF — ROS 2 RC Framework</div>
+                    <div class="entry-date">2026</div>
+                </div>
+                <div class="entry-desc">Framework di movimento per veicoli RC basato su Arduino Uno R4 WiFi con integrazione ROS 2: protocollo binario full-duplex a ~80Hz, lettura parallela dei sensori, EMA filtering hardware, obstacle avoidance autonomo a 30Hz e watchdog di sicurezza hardware.</div>
+                <div class="tags">
+                    <span class="tag">C++</span><span class="tag">ROS 2</span><span class="tag">Arduino</span><span class="tag">Embedded</span><span class="tag">Autonomous</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competenze Trasversali -->
+        <div class="section">
+            <div class="section-title">Competenze Trasversali</div>
+
+            <div class="trasversali-block">
+                <div class="trasversali-type">Relazionali e di comunicazione</div>
+                <div class="trasversali-text">
+                    Negli anni di consulenza per Giordano Moda ho sviluppato un'efficace capacità di comunicazione tecnica adattata all'interlocutore: spiegare problemi complessi a persone non tecniche, formare il personale sull'uso dei sistemi interni, e rispondere direttamente alle richieste dei clienti. Ho imparato che tradurre un problema tecnico in linguaggio accessibile è spesso il passo più critico per risolverlo.
+                </div>
+            </div>
+
+            <div class="trasversali-block">
+                <div class="trasversali-type">Organizzative</div>
+                <div class="trasversali-text">
+                    La gestione di un cluster Proxmox in produzione — con obblighi di continuità del servizio reale — mi ha abituato a pianificare interventi, documentare configurazioni e anticipare i punti di failure. Durante il progetto di tesi <em>Fixedness</em> ho coordinato in autonomia revisione bibliografica, implementazione sperimentale e stesura, gestendo complessità tecnica elevata in parallelo agli esami magistrali.
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy + firma -->
+        <div class="privacy">
+            <div class="privacy-text">Autorizzo il trattamento dei miei dati personali presenti nel CV ai sensi dell'art. 13 D.Lgs. 196/2003 e dell'art. 13 GDPR (Regolamento UE 2016/679) relativo alla protezione delle persone fisiche con riguardo al trattamento dei dati personali.</div>
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-label">Carlo Alberto Giordano</div>
+            </div>
+        </div>
+
+    </div><!-- /main -->
+
+</div><!-- /page -->
+</body>
+</html>
