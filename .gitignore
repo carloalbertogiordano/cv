@@ -2,3 +2,6 @@
 !.gitignore
 !cv.html
 !index.html
+!.github/
+!.github/workflows/
+!.github/workflows/static.yml
