@@ -102,6 +102,8 @@
             line-height: 1.4;
         }
         .contact-icon { flex-shrink: 0; width: 10px; text-align: center; color: #C8914A; margin-top: 1px; }
+        .contact-item a { color: inherit; text-decoration: none; }
+        .contact-item a:hover { text-decoration: underline; }
 
         .lang-row {
             display: flex;
@@ -119,10 +121,10 @@
         /* ─── MAIN CONTENT ──────────────────────────────────── */
         .main {
             flex: 1;
-            padding: 13px 16px 10px 16px;
+            padding: 10px 14px 8px 14px;
             display: flex;
             flex-direction: column;
-            gap: 7px;
+            gap: 5px;
         }
 
         .section-title {
@@ -134,18 +136,18 @@
             letter-spacing: 0.1em;
             border-bottom: 2px solid var(--accent);
             padding-bottom: 2px;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         /* Profile */
         .profile-text {
             font-size: 7pt;
             color: var(--muted);
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         /* Entry (education / work / project) */
-        .entry { margin-bottom: 5px; }
+        .entry { margin-bottom: 3px; }
         .entry:last-child { margin-bottom: 0; }
 
         .entry-header {
@@ -157,7 +159,7 @@
         .entry-title { font-size: 8pt; font-weight: 700; font-family: 'Playfair Display', Georgia, serif; color: var(--primary); }
         .entry-date  { font-size: 6.5pt; color: #777; white-space: nowrap; flex-shrink: 0; }
         .entry-sub   { font-size: 7pt; color: var(--accent2); margin-top: 1px; }
-        .entry-desc  { font-size: 7pt; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+        .entry-desc  { font-size: 7pt; color: var(--muted); margin-top: 1px; line-height: 1.3; }
 
         .entry-bullets {
             margin-top: 2px;
@@ -168,7 +170,7 @@
             font-size: 7pt;
             color: var(--muted);
             margin-bottom: 0px;
-            line-height: 1.35;
+            line-height: 1.25;
         }
 
         /* Project tags */
@@ -185,11 +187,16 @@
             margin-top: 1px;
         }
 
+        /* Project repo link — inline after tags */
+        .entry-repo { display: inline; margin-left: 5px; font-size: 5.5pt; }
+        .entry-repo a { color: var(--accent2); text-decoration: none; }
+        .entry-repo a:hover { text-decoration: underline; }
+
         /* Soft skills */
-        .trasversali-block { margin-bottom: 5px; }
+        .trasversali-block { margin-bottom: 3px; }
         .trasversali-block:last-child { margin-bottom: 0; }
         .trasversali-type { font-size: 7.5pt; font-weight: 700; color: var(--primary); margin-bottom: 1px; }
-        .trasversali-text { font-size: 7pt; color: var(--muted); line-height: 1.4; }
+        .trasversali-text { font-size: 7pt; color: var(--muted); line-height: 1.3; }
 
         /* Privacy + Signature */
         .privacy {
@@ -229,6 +236,10 @@
             }
         }
 
+        .lv-e { font-size: 5.5pt; color: #C8914A; font-weight: 700; }
+        .lv-b { font-size: 5.5pt; color: rgba(255,255,255,0.70); font-weight: 700; }
+        .lv-s { font-size: 5.5pt; color: rgba(255,255,255,0.42); font-weight: 700; }
+
         /* ─── PRINT ─────────────────────────────────────────── */
         @media print {
             body { background: white; }
@@ -262,7 +273,7 @@
 
         <div>
             <div class="sidebar-name">Carlo Alberto<br>Giordano</div>
-            <div class="sidebar-role">Laureando in Sicurezza Informatica</div>
+            <div class="sidebar-role">Laureando in Informatica (LM-18) — cur. Sicurezza Informatica</div>
         </div>
 
         <hr class="sidebar-divider">
@@ -280,23 +291,27 @@
             </div>
             <div class="contact-item">
                 <span class="contact-icon">in</span>
-                <span>linkedin.com/in/carlo-alberto-<br>giordano-8b823b276</span>
+                <span><a href="https://www.linkedin.com/in/carlo-alberto-giordano-8b823b276">linkedin.com/in/carlo-alberto-<br>giordano-8b823b276</a></span>
             </div>
             <div class="contact-item">
                 <span class="contact-icon">⌥</span>
-                <span>github.com/carloalbertogiordano</span>
+                <span><a href="https://github.com/carloalbertogiordano">github.com/carloalbertogiordano</a></span>
             </div>
             <div class="contact-item">
                 <span class="contact-icon">◈</span>
-                <span>carloalbertogiordano.github.io/cv</span>
+                <span><a href="https://carloalbertogiordano.github.io/cv">carloalbertogiordano.github.io/cv</a></span>
             </div>
             <div class="contact-item">
                 <span class="contact-icon">⌂</span>
-                <span>Via Matese SNC — 81016 Campania, IT</span>
+                <span>Via Matese SNC, 81016 Piedimonte Matese (CE), Italia</span>
             </div>
             <div class="contact-item">
                 <span class="contact-icon">◎</span>
-                <span>29 Settembre 2001 — Italiana</span>
+                <span>29 Settembre 2001, Piedimonte Matese (CE) — Italiana</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">♂</span>
+                <span>Maschile</span>
             </div>
         </div>
 
@@ -319,22 +334,36 @@
 
             <div class="skill-group">
                 <div class="skill-group-name">Linguaggi</div>
-                <div class="skill-group-items">C · Assembly (x86) · Python<br>Rust · Java · Bash / Shell</div>
+                <div class="skill-group-items">
+                    <span class="lv-e">Elevato </span>C · Python · Java · Bash<br>
+                    <span class="lv-s">Sufficiente </span>Assembly (x86) · Rust
+                </div>
             </div>
 
             <div class="skill-group">
                 <div class="skill-group-name">Sicurezza informatica</div>
-                <div class="skill-group-items">Firmware Reverse Engineering<br>Cryptanalysis (known/chosen plaintext)<br>HID / BadUSB attacks<br>SAT/SMT · Data Privacy Auditing<br>Binary exploitation (CTF)</div>
+                <div class="skill-group-items">
+                    <span class="lv-e">Elevato </span>Firmware Reverse Engineering<br>
+                    <span class="lv-b">Buono </span>HID/BadUSB · SAT/SMT · Binary exploitation<br>
+                    <span class="lv-s">Sufficiente </span>Cryptanalysis
+                </div>
             </div>
 
             <div class="skill-group">
                 <div class="skill-group-name">Offensive / RE / Forensics</div>
-                <div class="skill-group-items">nmap · Zenmap · Metasploit<br>Hashcat · John the Ripper · bkcrack<br>Wireshark · tcpdump<br>Ghidra · Volatility</div>
+                <div class="skill-group-items">
+                    <span class="lv-e">Elevato </span>Ghidra<br>
+                    <span class="lv-b">Buono </span>nmap · Metasploit · Hashcat · JtR · bkcrack · Volatility<br>
+                    <span class="lv-s">Sufficiente </span>Wireshark · tcpdump
+                </div>
             </div>
 
             <div class="skill-group">
                 <div class="skill-group-name">Infrastruttura</div>
-                <div class="skill-group-items">Proxmox VE · PBS · TrueNAS<br>Linux (admin) · Virtualizzazione<br>CrowdSec · Fail2ban · Semaphore</div>
+                <div class="skill-group-items">
+                    <span class="lv-e">Elevato </span>Proxmox VE · PBS · TrueNAS · Linux · Virtualizzazione<br>
+                    <span class="lv-s">Sufficiente </span>CrowdSec · Fail2ban · Semaphore
+                </div>
             </div>
 
         </div>
@@ -376,7 +405,7 @@
         <div class="section">
             <div class="section-title">Profilo</div>
             <div class="profile-text">
-                Laureando magistrale in Sicurezza Informatica all'Università di Salerno. Il mio approccio alla sicurezza muove sempre dai livelli più bassi: capire le vulnerabilità nel firmware prima di quelle dei protocolli, sviluppare sistemi embedded per testare i limiti dell'hardware, gestire infrastrutture reali in produzione per capire cosa significa veramente interagire con un cliente. Affianco agli studi un'attività continuativa di consulenza IT e la gestione autonoma di un cluster Proxmox in produzione.
+                Laureando magistrale in Informatica (LM-18), curriculum Sicurezza Informatica, all'Università di Salerno. Il mio approccio alla sicurezza muove sempre dai livelli più bassi: capire le vulnerabilità nel firmware prima di quelle dei protocolli, sviluppare sistemi embedded per testare i limiti dell'hardware, gestire infrastrutture reali in produzione per capire cosa significa veramente interagire con un cliente. Affianco agli studi un'attività continuativa di consulenza IT e la gestione autonoma di un cluster Proxmox in produzione.
             </div>
         </div>
 
@@ -431,18 +460,6 @@
                 </ul>
             </div>
 
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">Analisi Flussi Produttivi</div>
-                    <div class="entry-date">Estate 2022 – 2025</div>
-                </div>
-                <div class="entry-sub">Specialcorde srl — Gioia Sannitica (CE)</div>
-                <ul class="entry-bullets">
-                    <li>Mappatura e analisi dei processi produttivi aziendali</li>
-                    <li>Identificazione di colli di bottiglia e proposta di azioni correttive</li>
-                    <li>Partecipazione alle riunioni operative con la direzione aziendale</li>
-                </ul>
-            </div>
         </div>
 
         <!-- Progetti -->
@@ -456,7 +473,7 @@
                 </div>
                 <div class="entry-desc">Misura il rischio di ricostruzione logica di record sensibili in dataset anonimizzati, via riduzione SAT/SMT e detection di leak deterministici (co-NP UNSAT). Valutato su 10 tecniche di anonimizzazione. Sviluppato in coordinamento con il Prof. Ugo Fiore (Dip. Informatica, UNISA), con testing su server ad alte prestazioni del dipartimento.</div>
                 <div class="tags">
-                    <span class="tag">Python</span><span class="tag">SAT/SMT</span><span class="tag">Data Privacy</span><span class="tag">Research</span>
+                    <span class="tag">Python</span><span class="tag">SAT/SMT</span><span class="tag">Data Privacy</span><span class="tag">Research</span><span class="entry-repo"><a href="https://github.com/carloalbertogiordano/Fixedness">↗ github</a></span>
                 </div>
             </div>
 
@@ -467,7 +484,7 @@
                 </div>
                 <div class="entry-desc">Reverse engineering del firmware di un veicolo Mazda: exploit della cifratura ZipCrypto tramite known-plaintext attack (bkcrack). Documentata la vulnerabilità e l'intera procedura di decifrazione.</div>
                 <div class="tags">
-                    <span class="tag">Firmware RE</span><span class="tag">Cryptanalysis</span><span class="tag">ZipCrypto</span>
+                    <span class="tag">Firmware RE</span><span class="tag">Cryptanalysis</span><span class="tag">ZipCrypto</span><span class="entry-repo"><a href="https://github.com/carloalbertogiordano/Mazda-Firmware-Decryption">↗ github</a></span>
                 </div>
             </div>
 
@@ -478,7 +495,7 @@
                 </div>
                 <div class="entry-desc">Kernel bare-metal in C, Assembly x86 e Rust: bootloader, memory management, interrupt handling. Sviluppati per comprensione profonda delle superfici di attacco a livello hardware.</div>
                 <div class="tags">
-                    <span class="tag">C</span><span class="tag">Assembly x86</span><span class="tag">Rust</span><span class="tag">OS Dev</span>
+                    <span class="tag">C</span><span class="tag">Assembly x86</span><span class="tag">Rust</span><span class="tag">OS Dev</span><span class="entry-repo"><a href="https://github.com/carloalbertogiordano/myOS">↗ myOS</a> · <a href="https://github.com/carloalbertogiordano/nonameOS">nonameOS</a> · <a href="https://github.com/carloalbertogiordano/MyRustyOS">MyRustyOS</a></span>
                 </div>
             </div>
 
@@ -500,7 +517,7 @@
                 </div>
                 <div class="entry-desc">Hub AI multimodale self-hosted su llama.cpp, whisper.cpp e ncnn: LLM, trascrizione audio e TTS con accelerazione Vulkan su GPU Intel, AMD e NVIDIA. Compatibile nativamente con OpenAI e Ollama API, con conversione automatica da Hugging Face Safetensors a GGUF. Zero dipendenze cloud.</div>
                 <div class="tags">
-                    <span class="tag">Python</span><span class="tag">llama.cpp</span><span class="tag">Vulkan</span><span class="tag">AI</span><span class="tag">Self-hosting</span>
+                    <span class="tag">Python</span><span class="tag">llama.cpp</span><span class="tag">Vulkan</span><span class="tag">AI</span><span class="tag">Self-hosting</span><span class="entry-repo"><a href="https://github.com/carloalbertogiordano/tinyLlamaServer">↗ github</a></span>
                 </div>
             </div>
 
@@ -511,8 +528,26 @@
                 </div>
                 <div class="entry-desc">Framework di movimento per veicoli RC basato su Arduino Uno R4 WiFi con integrazione ROS 2: protocollo binario full-duplex a ~80Hz, lettura parallela dei sensori, EMA filtering hardware, obstacle avoidance autonomo a 30Hz e watchdog di sicurezza hardware.</div>
                 <div class="tags">
-                    <span class="tag">C++</span><span class="tag">ROS 2</span><span class="tag">Arduino</span><span class="tag">Embedded</span><span class="tag">Autonomous</span>
+                    <span class="tag">C++</span><span class="tag">ROS 2</span><span class="tag">Arduino</span><span class="tag">Embedded</span><span class="tag">Autonomous</span><span class="entry-repo"><a href="https://github.com/carloalbertogiordano/ArduinoRFCarMovementHelperFramework">↗ github</a></span>
                 </div>
+            </div>
+        </div>
+
+        <!-- Altre Esperienze -->
+        <div class="section">
+            <div class="section-title">Altre Esperienze</div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Analisi Flussi Produttivi</div>
+                    <div class="entry-date">Estate 2022 – 2025</div>
+                </div>
+                <div class="entry-sub">Specialcorde srl — Gioia Sannitica (CE)</div>
+                <ul class="entry-bullets">
+                    <li>Mappatura e analisi dei processi produttivi aziendali</li>
+                    <li>Identificazione di colli di bottiglia e proposta di azioni correttive</li>
+                    <li>Partecipazione alle riunioni operative con la direzione aziendale</li>
+                </ul>
             </div>
         </div>
 
@@ -523,14 +558,14 @@
             <div class="trasversali-block">
                 <div class="trasversali-type">Relazionali e di comunicazione</div>
                 <div class="trasversali-text">
-                    Negli anni di consulenza per Giordano Moda ho sviluppato un'efficace capacità di comunicazione tecnica adattata all'interlocutore: spiegare problemi complessi a persone non tecniche, formare il personale sull'uso dei sistemi interni, e rispondere direttamente alle richieste dei clienti. Ho imparato che tradurre un problema tecnico in linguaggio accessibile è spesso il passo più critico per risolverlo.
+                    Nelle consulenze per Giordano Moda e nell'analisi dei processi produttivi di Specialcorde ho comunicato osservazioni tecniche a persone non tecniche: formazione del personale sull'uso dei sistemi interni, presentazione di colli di bottiglia alla direzione aziendale, interfaccia diretta con clienti. Gestire queste situazioni mi ha insegnato che spiegare un problema nel linguaggio giusto è spesso la parte più difficile della soluzione.
                 </div>
             </div>
 
             <div class="trasversali-block">
                 <div class="trasversali-type">Organizzative</div>
                 <div class="trasversali-text">
-                    La gestione di un cluster Proxmox in produzione — con obblighi di continuità del servizio reale — mi ha abituato a pianificare interventi, documentare configurazioni e anticipare i punti di failure. Durante il progetto di tesi <em>Fixedness</em> ho coordinato in autonomia revisione bibliografica, implementazione sperimentale e stesura, gestendo complessità tecnica elevata in parallelo agli esami magistrali.
+                    Gestire il cluster Proxmox in produzione, con obblighi di continuità del servizio su un cliente reale, mi ha abituato a pianificare interventi, documentare configurazioni e anticipare i punti di failure. Durante la tesi <em>Fixedness</em> ho coordinato in autonomia revisione bibliografica, implementazione sperimentale e stesura, in parallelo agli esami magistrali. La lavorazione artigianale di pelle e sartoria richiede la stessa impostazione: definire un piano, gestire materiali e tempi, portare un progetto a termine con margine di errore quasi nullo.
                 </div>
             </div>
         </div>
