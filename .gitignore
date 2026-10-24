@@ -1,6 +1,7 @@
 *
 !.gitignore
 !cv.html
+!cv-it.html
 !index.html
 !.github/
 !.github/workflows/
