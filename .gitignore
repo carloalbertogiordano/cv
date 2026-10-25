@@ -6,3 +6,5 @@
 !.github/
 !.github/workflows/
 !.github/workflows/static.yml
+!assets/
+!assets/photo.jpg
