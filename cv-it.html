@@ -14,15 +14,18 @@
             --primary:  #2C1810;
             --accent:   #B8753A;
             --accent2:  #7A4520;
-            --light:    #E8D5B7;
+            --light:    #EADBC4;
             --text:     #1A0E08;
             --muted:    #4a3828;
-            --sidebar-w: 67mm;
+            --rule:     #d8c6ad;
         }
+
+        html { background: #c8b49a; }
 
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            font-size: 9pt;
+            font-size: 10pt;
+            line-height: 1.3;
             color: var(--text);
             background: #c8b49a;
         }
@@ -30,507 +33,271 @@
         .page {
             width: 210mm;
             min-height: 297mm;
-            background: white;
-            display: flex;
-            margin: 0 auto;
+            background: #fff;
+            margin: 10mm auto;
+            padding: 10mm 16mm 9mm 16mm;
         }
 
-        .sidebar {
-            width: var(--sidebar-w);
-            background: var(--primary);
-            color: white;
-            padding: 16px 14px 16px 14px;
+        .header { border-bottom: 2.5px solid var(--accent); padding-bottom: 7px; margin-bottom: 9px; display: flex; align-items: flex-start; gap: 14px; }
+        .header-text { flex: 1; min-width: 0; }
+        .photo {
+            width: 22mm;
+            height: 22mm;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
             flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            position: relative;
-            overflow: hidden;
         }
-
-        .sidebar::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-            opacity: 0.06;
-            pointer-events: none;
-            mix-blend-mode: overlay;
-        }
-
-        .sidebar-name {
-            font-size: 14.5pt;
-            font-weight: 800;
+        .name {
             font-family: 'Playfair Display', Georgia, serif;
-            line-height: 1.15;
-            color: white;
-            letter-spacing: -0.02em;
+            font-size: 25pt;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.01em;
+            line-height: 1.05;
         }
-
-        .sidebar-role {
-            font-size: 7.5pt;
-            color: #C8914A;
-            margin-top: 4px;
-            font-style: italic;
-        }
-
-        .lang-switch {
-            margin-top: 6px;
-            font-size: 6.5pt;
-            letter-spacing: 0.08em;
-        }
-        .lang-switch a { color: rgba(255,255,255,0.6); text-decoration: none; }
-        .lang-switch a.active { color: #C8914A; font-weight: 700; }
+        .role { font-size: 10.5pt; color: var(--accent2); font-style: italic; margin-top: 4px; }
+        .lang-switch { float: right; font-size: 8.5pt; letter-spacing: 0.06em; margin-top: 4px; }
+        .lang-switch a { color: var(--accent2); text-decoration: none; }
+        .lang-switch a.active { font-weight: 700; color: var(--primary); }
         .lang-switch a:hover { text-decoration: underline; }
 
-        .sidebar-divider {
-            border: none;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
+        .contacts { margin-top: 9px; font-size: 9pt; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 16px; }
+        .contacts span { white-space: nowrap; }
+        .contacts a { color: inherit; text-decoration: none; }
+        .contacts a:hover { text-decoration: underline; }
+        .contacts .ic { color: var(--accent); font-weight: 700; margin-right: 3px; }
 
-        .sidebar-section-title {
-            font-size: 6.5pt;
+        .section { margin-top: 6px; }
+        .section-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 11.5pt;
             font-weight: 700;
+            color: var(--primary);
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: #C8914A;
-            border-bottom: 1px solid rgba(200,145,74,0.35);
+            letter-spacing: 0.09em;
+            border-bottom: 1.5px solid var(--accent);
             padding-bottom: 3px;
             margin-bottom: 7px;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 5px;
-            margin-bottom: 5px;
-            font-size: 7pt;
-            color: rgba(255,255,255,0.88);
-            line-height: 1.4;
-        }
-        .contact-icon { flex-shrink: 0; width: 10px; text-align: center; color: #C8914A; margin-top: 1px; }
-        .contact-item a { color: inherit; text-decoration: none; }
-        .contact-item a:hover { text-decoration: underline; }
+        .profile-text { font-size: 9.75pt; color: var(--muted); line-height: 1.34; }
 
-        .lang-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 7.5pt;
-            margin-bottom: 4px;
-        }
-        .lang-name { color: rgba(255,255,255,0.9); }
-        .lang-level { color: #C8914A; font-size: 7pt; }
-
-        .skill-group { margin-bottom: 5px; }
-        .skill-group-name { font-size: 6.5pt; color: #C8914A; font-weight: 700; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
-        .skill-group-items { font-size: 7pt; color: rgba(255,255,255,0.82); line-height: 1.55; }
-
-        .main {
-            flex: 1;
-            padding: 10px 14px 8px 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .section-title {
-            font-size: 7.5pt;
-            font-weight: 700;
-            font-family: 'Playfair Display', Georgia, serif;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 2px;
-            margin-bottom: 3px;
-        }
-
-        .profile-text {
-            font-size: 7pt;
-            color: var(--muted);
-            line-height: 1.3;
-        }
-
-        .entry { margin-bottom: 3px; }
+        .entry { margin-bottom: 3px; break-inside: avoid; }
         .entry:last-child { margin-bottom: 0; }
+        .entry-header { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+        .entry-title { font-size: 10.5pt; font-weight: 700; color: var(--primary); }
+        .entry-date  { font-size: 8.5pt; color: #90795f; white-space: nowrap; flex-shrink: 0; }
+        .entry-sub   { font-size: 9pt; color: var(--accent2); margin-top: 1px; font-weight: 600; }
+        .entry-desc  { font-size: 9.5pt; color: var(--muted); margin-top: 2px; line-height: 1.32; }
+        .entry-bullets { margin-top: 2px; padding-left: 16px; list-style: disc; }
+        .entry-bullets li { font-size: 9.5pt; color: var(--muted); margin-bottom: 1px; line-height: 1.28; }
 
-        .entry-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 8px;
-        }
-        .entry-title { font-size: 8pt; font-weight: 700; font-family: 'Playfair Display', Georgia, serif; color: var(--primary); }
-        .entry-date  { font-size: 6.5pt; color: #777; white-space: nowrap; flex-shrink: 0; }
-        .entry-sub   { font-size: 7pt; color: var(--accent2); margin-top: 1px; }
-        .entry-desc  { font-size: 7pt; color: var(--muted); margin-top: 1px; line-height: 1.3; }
+        .tags { margin-top: 3px; }
+        .tag { display: inline-block; background: var(--light); color: var(--accent2); font-size: 7pt; font-weight: 700; padding: 1.5px 5px; border-radius: 3px; margin-right: 4px; margin-top: 2px; letter-spacing: 0.02em; }
+        .repo { font-size: 7.5pt; margin-left: 4px; }
+        .repo a { color: var(--accent2); text-decoration: none; }
+        .repo a:hover { text-decoration: underline; }
+        em.held { color: #90795f; font-size: 9pt; }
 
-        .entry-bullets {
-            margin-top: 2px;
-            padding-left: 11px;
-            list-style: disc;
-        }
-        .entry-bullets li {
-            font-size: 7pt;
-            color: var(--muted);
-            margin-bottom: 0px;
-            line-height: 1.25;
-        }
+        .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 26px; }
+        .skill-row { font-size: 9.5pt; color: var(--muted); margin-bottom: 2px; line-height: 1.3; }
+        .skill-row b { color: var(--primary); font-weight: 700; }
+        .skill-lvl { color: var(--accent); font-weight: 700; font-size: 8pt; margin-right: 3px; text-transform: uppercase; letter-spacing: 0.03em; }
 
-        .tags { margin-top: 2px; }
-        .tag {
-            display: inline-block;
-            background: var(--light);
-            color: var(--accent);
-            font-size: 5.5pt;
-            font-weight: 700;
-            padding: 1px 4px;
-            border-radius: 3px;
-            margin-right: 3px;
-            margin-top: 1px;
-        }
+        .meta-grid { display: grid; grid-template-columns: 1.2fr 1fr 1.1fr; gap: 6px 22px; }
+        .meta-grid h4 { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent2); margin-bottom: 4px; }
+        .meta-grid .line { font-size: 9.25pt; color: var(--muted); margin-bottom: 2px; }
+        .meta-grid .line b { color: var(--primary); }
 
-        .entry-repo { display: inline; margin-left: 5px; font-size: 5.5pt; }
-        .entry-repo a { color: var(--accent2); text-decoration: none; }
-        .entry-repo a:hover { text-decoration: underline; }
+        .privacy { margin-top: 5px; padding-top: 5px; border-top: 1px solid var(--rule); font-size: 7.5pt; color: #9a876c; line-height: 1.5; }
 
-        .privacy {
-            font-size: 6pt;
-            color: #999;
-            border-top: 1px solid #e0e0e0;
-            padding-top: 6px;
-            line-height: 1.5;
-            margin-top: auto;
-            display: flex;
-            align-items: flex-end;
-            gap: 14px;
-        }
-        .privacy-text { flex: 1; }
-
-        .signature-box { text-align: center; flex-shrink: 0; }
-        .signature-line {
-            width: 52mm;
-            border-bottom: 1px solid #aaa;
-            height: 18px;
-            margin-bottom: 2px;
-        }
-        .signature-label { font-size: 6.5pt; color: #888; }
-
-        @media screen {
-            .entry {
-                border-radius: 3px;
-                padding: 3px 6px;
-                margin-left: -6px;
-                transition: background 0.15s, border-left 0.15s;
-            }
-            .entry:hover {
-                background: rgba(184, 117, 58, 0.07);
-                border-left: 2px solid var(--accent);
-                padding-left: 8px;
-            }
-        }
-
-        .lv-e { font-size: 5.5pt; color: #C8914A; font-weight: 700; }
-        .lv-b { font-size: 5.5pt; color: rgba(255,255,255,0.70); font-weight: 700; }
-        .lv-s { font-size: 5.5pt; color: rgba(255,255,255,0.42); font-weight: 700; }
+        a { color: inherit; }
 
         @media print {
-            body { background: white; }
-            .page { margin: 0; }
-            * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-            .entry { border-left: none !important; background: none !important; padding: 3px 0 !important; margin-left: 0 !important; }
-            .sidebar::after { display: none; }
+            html, body { background: #fff; }
+            .page { margin: 0; width: auto; min-height: 0; padding: 0; box-shadow: none; }
             .lang-switch { display: none; }
-
-            .sidebar { background: #f0e6d4 !important; }
-            .sidebar-name { color: #2C1810 !important; }
-            .sidebar-role { color: #7A4520 !important; }
-            .sidebar-divider { border-top-color: rgba(44,24,16,0.2) !important; }
-            .sidebar-section-title { color: #7A4520 !important; border-bottom-color: rgba(122,69,32,0.3) !important; }
-            .contact-item { color: #2C1810 !important; }
-            .contact-icon { color: #B8753A !important; }
-            .lang-name { color: #2C1810 !important; }
-            .lang-level { color: #7A4520 !important; }
-            .skill-group-name { color: #7A4520 !important; }
-            .skill-group-items { color: #3a2010 !important; }
+            * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            .entry { break-inside: avoid; }
+            .section-title { break-after: avoid; }
         }
-
-        @page { size: A4; margin: 0; }
+        @page { size: A4; margin: 11mm 15mm; }
     </style>
 </head>
 <body>
 <div class="page">
 
-    <!-- ══ SIDEBAR ══════════════════════════════════════════ -->
-    <div class="sidebar">
-
-        <div>
-            <div class="sidebar-name">Carlo Alberto<br>Giordano</div>
-            <div class="sidebar-role">Sicurezza Informatica · Reverse Engineering Firmware · Sicurezza Embedded</div>
+    <div class="header">
+        <div class="header-text">
             <div class="lang-switch"><a href="cv.html">EN</a> · <a href="cv-it.html" class="active">IT</a></div>
-        </div>
-
-        <hr class="sidebar-divider">
-
-        <!-- Contatti -->
-        <div>
-            <div class="sidebar-section-title">Contatti</div>
-            <div class="contact-item">
-                <span class="contact-icon">✉</span>
-                <span>carloalbertogiordano@duck.com</span>
-            </div>
-            <div class="contact-item">
-                <span class="contact-icon">in</span>
-                <span><a href="https://www.linkedin.com/in/carlo-alberto-giordano-8b823b276">linkedin.com/in/carlo-alberto-<br>giordano-8b823b276</a></span>
-            </div>
-            <div class="contact-item">
-                <span class="contact-icon">⌥</span>
-                <span><a href="https://github.com/carloalbertogiordano">github.com/carloalbertogiordano</a></span>
-            </div>
-            <div class="contact-item">
-                <span class="contact-icon">◈</span>
-                <span><a href="https://carloalbertogiordano.github.io/cv">carloalbertogiordano.github.io/cv</a></span>
-            </div>
-            <div class="contact-item">
-                <span class="contact-icon">⌂</span>
-                <span>Piedimonte Matese (CE), Italia</span>
+            <div class="name">Carlo Alberto Giordano</div>
+            <div class="role">Sicurezza Informatica · Reverse Engineering Firmware &amp; Hardware</div>
+            <div class="contacts">
+                <span><span class="ic">✉</span>carloalbertogiordano@duck.com</span>
+                <span><span class="ic">in</span><a href="https://www.linkedin.com/in/carlo-alberto-giordano-8b823b276">linkedin.com/in/carlo-alberto-giordano</a></span>
+                <span><span class="ic">⌨</span><a href="https://github.com/carloalbertogiordano">github.com/carloalbertogiordano</a></span>
+                <span><span class="ic">◈</span><a href="https://carloalbertogiordano.github.io/cv">carloalbertogiordano.github.io/cv</a></span>
+                <span><span class="ic">⌂</span>Piedimonte Matese (CE), Italia</span>
             </div>
         </div>
+        <img class="photo" src="assets/photo.jpg" alt="Carlo Alberto Giordano">
+    </div>
 
-        <hr class="sidebar-divider">
+    <div class="section">
+        <div class="section-title">Profilo</div>
+        <div class="profile-text">
+            Laureato magistrale in Informatica (Sicurezza Informatica) all'Università di Salerno, ottobre 2026. Lavoro sulla sicurezza dal basso — firmware, hardware embedded e sistemi operativi: reverse engineering del firmware Intel ME al ring&nbsp;-3, firmware di un'auto decifrato via debolezza ZipCrypto, catena di recovery checkm8 sul mio iPhone 5, teardown di chip BLE e toner, e un cluster Proxmox in produzione. Cerco ruoli operativi in penetration testing, reverse engineering e sicurezza embedded/hardware — ibrido o da remoto.
+        </div>
+    </div>
 
-        <!-- Lingue -->
-        <div>
-            <div class="sidebar-section-title">Lingue</div>
-            <div class="lang-row"><span class="lang-name">Italiano</span><span class="lang-level">Madrelingua</span></div>
-            <div class="lang-row"><span class="lang-name">Inglese</span><span class="lang-level">C1 — Avanzato</span></div>
+    <div class="section">
+        <div class="section-title">Esperienze</div>
+
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">Software Engineer — Collaborazione R&amp;D</div><div class="entry-date">Lug 2026 – oggi</div></div>
+            <div class="entry-sub">Flytech S.r.l. — ispezione droni &amp; termografia FV · Da remoto</div>
+            <div class="entry-desc">Sviluppo di un tool interno che semplifica l'identificazione dei pannelli fotovoltaici danneggiati da immagini drone, con risultati superiori a DJI Terra sul dataset dell'azienda. Proprietario — non pubblicato.</div>
         </div>
 
-        <hr class="sidebar-divider">
-
-        <!-- Competenze tecniche -->
-        <div>
-            <div class="sidebar-section-title">Competenze Tecniche</div>
-
-            <div class="skill-group">
-                <div class="skill-group-name">Reverse Engineering / Offensive</div>
-                <div class="skill-group-items">
-                    <span class="lv-e">Elevato </span>Reverse Engineering Firmware · Ghidra<br>
-                    <span class="lv-b">Buono </span>Binary exploitation · HID/BadUSB · nmap · Metasploit<br>
-                    <span class="lv-b">Buono </span>Hashcat · John the Ripper · bkcrack · Volatility<br>
-                    <span class="lv-s">Sufficiente </span>Crittoanalisi · Wireshark · tcpdump
-                </div>
-            </div>
-
-            <div class="skill-group">
-                <div class="skill-group-name">Linguaggi</div>
-                <div class="skill-group-items">
-                    <span class="lv-e">Elevato </span>C · Python · Bash · Java<br>
-                    <span class="lv-s">Sufficiente </span>Assembly (x86) · Rust
-                </div>
-            </div>
-
-            <div class="skill-group">
-                <div class="skill-group-name">Infrastruttura</div>
-                <div class="skill-group-items">
-                    <span class="lv-e">Elevato </span>Linux · Proxmox VE · PBS · TrueNAS · Virtualizzazione<br>
-                    <span class="lv-s">Sufficiente </span>CrowdSec · Fail2ban · Semaphore
-                </div>
-            </div>
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">Consulente IT &amp; Gestione Sistemi</div><div class="entry-date">2018 – oggi</div></div>
+            <div class="entry-sub">Giordano Moda — Piedimonte Matese (CE)</div>
+            <ul class="entry-bullets">
+                <li>Sviluppo e manutenzione di software gestionale e automazioni in Python e Bash.</li>
+                <li>Integrazione di flussi AI nei processi aziendali tramite software sviluppato ad hoc.</li>
+                <li>Progettazione e gestione di un cluster Proxmox in produzione a supporto dell'infrastruttura aziendale.</li>
+                <li>Gestione database; formazione del personale e interfaccia diretta con i clienti.</li>
+            </ul>
         </div>
 
-        <hr class="sidebar-divider">
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">Analisi Flussi Produttivi</div><div class="entry-date">Estate 2022 – 2025</div></div>
+            <div class="entry-sub">Specialcorde srl — Gioia Sannitica (CE)</div>
+            <div class="entry-desc">Mappatura e analisi dei processi produttivi, identificazione di colli di bottiglia e proposta di azioni correttive, con presentazione dei risultati alla direzione.</div>
+        </div>
+    </div>
 
-        <!-- Certificazioni -->
-        <div>
-            <div class="sidebar-section-title">Certificazioni</div>
-            <div class="skill-group-items">Certificato Inglese C1<br>
-                <span style="color:#C8914A;font-size:6.5pt">Acquisito in Irlanda</span>
-            </div>
+    <div class="section">
+        <div class="section-title">Progetti di Sicurezza</div>
+
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">Security Assessment Intel ME (CSME 11.8)</div><div class="entry-date">2026</div></div>
+            <div class="entry-desc">Progetto universitario autorizzato di offensive security su un Surface Pro 4. Reverse engineering dei moduli FTPR della Intel Management Engine (BUP, MCA) in Ghidra al ring&nbsp;-3, verifica dello stato delle patch rispetto ad advisory noti (INTEL-SA-00086, CVE-2019-0090) e identificazione di diversi findings originali, inediti, oltre la letteratura pubblica. Ricostruzione e validazione statica della catena di exploit firmware→JTAG. <em class="held">Dettagli trattenuti in disclosure responsabile.</em></div>
+            <div class="tags"><span class="tag">Intel ME / CSME</span><span class="tag">Ghidra</span><span class="tag">Reverse Eng. Firmware</span><span class="tag">ring -3</span></div>
         </div>
 
-        <hr class="sidebar-divider">
-
-        <!-- Interessi -->
-        <div>
-            <div class="sidebar-section-title">Interessi</div>
-            <div class="skill-group-name">Tecnici</div>
-            <div class="skill-group-items" style="margin-bottom:6px">
-                Comunicazione decentralizzata<br>
-                Sicurezza embedded &amp; firmware<br>
-                OS development a basso livello<br>
-                Homelab &amp; self-hosting
-            </div>
-            <div class="skill-group-name">Personali</div>
-            <div class="skill-group-items">
-                Track day in moto (Limatola, Iscaro)<br>
-                Lavorazione pelle &amp; sartoria · Greco &amp; Esperanto (base)
-            </div>
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">Recupero Passcode iPhone 5 (A6) — Ricerca di Sicurezza</div><div class="entry-date">2026</div></div>
+            <div class="entry-desc">Catena di recovery completa basata su exploit del bootrom su un iPhone 5 personale e bloccato (A6, senza Secure Enclave): checkm8 in DFU → ramdisk SSH non firmato → estrazione del system keybag → brute-forcer on-device custom che pilota il motore AES hardware, più il kernel patch per sbloccarlo. Raggiunta la stessa velocità per tentativo dei tool forensi commerciali; documentato come risultato negativo rigoroso.</div>
+            <div class="tags"><span class="tag">checkm8</span><span class="tag">iOS</span><span class="tag">Reverse Eng. Firmware</span><span class="tag">Forensics</span><span class="repo"><a href="https://github.com/carloalbertogiordano/iphone5-forensics-a6">↗ github</a></span></div>
         </div>
 
-    </div><!-- /sidebar -->
-
-    <!-- ══ MAIN ══════════════════════════════════════════════ -->
-    <div class="main">
-
-        <!-- Profilo -->
-        <div class="section">
-            <div class="section-title">Profilo</div>
-            <div class="profile-text">
-                Laureato magistrale in Informatica (curriculum Sicurezza Informatica) all'Università di Salerno (ottobre 2026). Lavoro sulla sicurezza dal basso: faccio reverse engineering del firmware, teardown di hardware embedded e scrivo kernel bare-metal per capire le superfici di attacco al livello dove vivono davvero. Ho decifrato il firmware di un'auto sfruttando una debolezza di ZipCrypto, costruito una catena di recovery completa basata su checkm8 sul mio iPhone 5 bloccato e gestisco un cluster Proxmox in produzione per un cliente reale. Cerco ruoli operativi in penetration testing, reverse engineering e sicurezza embedded — ibrido o da remoto.
-            </div>
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">TP-Link TL-WR841N — RE Firmware &amp; Custom Firmware</div><div class="entry-date">2024</div></div>
+            <div class="entry-sub">con Mattia (@Cvlmtt)</div>
+            <div class="entry-desc">Reverse engineering del firmware del router (binwalk, Firmware-Mod-Kit, firmwalker), toolchain cross MIPS32R2 / uClibc-ng con Buildroot, e scoperta dei vincoli di layout non documentati (dimensione blocco SquashFS + padding esatto) necessari a ricostruire un firmware custom funzionante che preserva la configurazione.</div>
+            <div class="tags"><span class="tag">Reverse Eng. Firmware</span><span class="tag">MIPS</span><span class="tag">Buildroot</span><span class="tag">Embedded</span></div>
         </div>
 
-        <!-- Esperienze -->
-        <div class="section">
-            <div class="section-title">Esperienze</div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">Software Engineer — Collaborazione R&amp;D</div>
-                    <div class="entry-date">Lug 2026 – oggi</div>
-                </div>
-                <div class="entry-sub">Flytech S.r.l. — ispezione droni &amp; termografia FV · Da remoto</div>
-                <div class="entry-desc">
-                    Sviluppo di un tool interno che semplifica l'identificazione dei pannelli fotovoltaici danneggiati da immagini drone, con risultati superiori a DJI Terra sul dataset dell'azienda. Proprietario — non pubblicato.
-                </div>
-            </div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">Consulente IT &amp; Gestione Sistemi</div>
-                    <div class="entry-date">2018 – oggi</div>
-                </div>
-                <div class="entry-sub">Giordano Moda — Piedimonte Matese (CE)</div>
-                <ul class="entry-bullets">
-                    <li>Sviluppo e manutenzione di software gestionale e automazioni in Python e Bash</li>
-                    <li>Integrazione di flussi AI nei processi aziendali tramite software sviluppato ad hoc</li>
-                    <li>Progettazione e gestione di un cluster Proxmox in produzione a supporto dell'infrastruttura aziendale</li>
-                    <li>Gestione database; formazione del personale e interfaccia diretta con i clienti</li>
-                </ul>
-            </div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">Analisi Flussi Produttivi</div>
-                    <div class="entry-date">Estate 2022 – 2025</div>
-                </div>
-                <div class="entry-sub">Specialcorde srl — Gioia Sannitica (CE)</div>
-                <div class="entry-desc">Mappatura e analisi dei processi produttivi, identificazione di colli di bottiglia e proposta di azioni correttive, con presentazione dei risultati alla direzione.</div>
-            </div>
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">HP Toner Chip — Reverse Engineering Hardware</div><div class="entry-date">2026</div></div>
+            <div class="entry-desc">Pentest a livello hardware del chip "E-label" di una cartuccia HP (chip-on-board). Mappatura del pinout col multimetro in modalità diodo, analisi OneWire/raw-probe e di modulazione di corrente via Arduino — con controlli positivi/negativi che hanno smascherato tre falsi positivi (incluso il ronzio di rete a 50&nbsp;Hz). Risultato negativo rigoroso sul protocollo del chip, più il contesto HP Dynamic Security.</div>
+            <div class="tags"><span class="tag">Hardware RE</span><span class="tag">Elettronica</span><span class="tag">Arduino</span><span class="tag">COB</span></div>
         </div>
 
-        <!-- Progetti -->
-        <div class="section">
-            <div class="section-title">Progetti di Sicurezza</div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">Recupero Passcode iPhone 5 (A6) — Ricerca di Sicurezza</div>
-                    <div class="entry-date">2026</div>
-                </div>
-                <div class="entry-desc">Catena di recovery completa basata su exploit del bootrom su un iPhone 5 personale e bloccato (A6, senza Secure Enclave): exploit checkm8 in DFU → ramdisk SSH non firmato → estrazione del system keybag → brute-forcer on-device custom che pilota direttamente il motore AES hardware, più il kernel patch necessario a sbloccarlo. Raggiunta la stessa velocità per tentativo dei tool forensi commerciali; documentato come risultato negativo rigoroso.</div>
-                <div class="tags">
-                    <span class="tag">checkm8</span><span class="tag">iOS</span><span class="tag">Reverse Eng. Firmware</span><span class="tag">Forensics</span><span class="entry-repo"><a href="https://github.com/carloalbertogiordano/iphone5-forensics-a6">↗ github</a></span>
-                </div>
-            </div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">Teardown Tracker BLE XY Tag (RM1230)</div>
-                    <div class="entry-date">2026</div>
-                </div>
-                <div class="entry-desc">Teardown hardware e firmware di un tracker BLE clone di AirTag: analisi del PCB, identificazione dei pad di debug, dump del firmware e analisi statica in Ghidra.</div>
-                <div class="tags">
-                    <span class="tag">BLE</span><span class="tag">Hardware RE</span><span class="tag">Ghidra</span><span class="tag">Embedded</span><span class="entry-repo"><a href="https://github.com/carloalbertogiordano/xytag-rm1230-teardown">↗ github</a></span>
-                </div>
-            </div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">Mazda Firmware Decryption</div>
-                    <div class="entry-date">2024</div>
-                </div>
-                <div class="entry-desc">Reverse engineering dell'aggiornamento firmware di un sistema infotainment Mazda: rotta la cifratura ZipCrypto tramite known-plaintext attack (bkcrack) e documentata l'intera procedura di decifrazione.</div>
-                <div class="tags">
-                    <span class="tag">Reverse Eng. Firmware</span><span class="tag">Crittoanalisi</span><span class="tag">ZipCrypto</span><span class="entry-repo"><a href="https://github.com/carloalbertogiordano/Mazda-Firmware-Decryption">↗ github</a></span>
-                </div>
-            </div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">Fixedness — Data Privacy Auditing Framework (Tesi Magistrale)</div>
-                    <div class="entry-date">2026</div>
-                </div>
-                <div class="entry-desc">Framework che misura il rischio di ricostruzione logica di record sensibili in dataset anonimizzati, via riduzione a istanze SAT/SMT e detection di leak deterministici (co-NP UNSAT). Valutato su 10 tecniche di anonimizzazione. Sviluppato con il Prof. Ugo Fiore (Dip. Informatica, UNISA). Paper in stesura — repository privato.</div>
-                <div class="tags">
-                    <span class="tag">Python</span><span class="tag">SAT/SMT</span><span class="tag">Data Privacy</span><span class="tag">Research</span>
-                </div>
-            </div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">OS Development</div>
-                    <div class="entry-date">2023 – 2024</div>
-                </div>
-                <div class="entry-desc">Kernel bare-metal in C, Assembly x86 e Rust: bootloader, memory management, interrupt handling — sviluppati per comprendere le superfici di attacco a livello hardware.</div>
-                <div class="tags">
-                    <span class="tag">C</span><span class="tag">Assembly x86</span><span class="tag">Rust</span><span class="tag">OS Dev</span><span class="entry-repo"><a href="https://github.com/carloalbertogiordano/myOS">↗ myOS</a> · <a href="https://github.com/carloalbertogiordano/nonameOS">nonameOS</a> · <a href="https://github.com/carloalbertogiordano/MyRustyOS">MyRustyOS</a></span>
-                </div>
-            </div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">Proxmox Homelab Cluster</div>
-                    <div class="entry-date">2024 – oggi</div>
-                </div>
-                <div class="entry-desc">Progettazione e gestione di un cluster Proxmox in produzione: storage distribuito, networking avanzato, automation con Semaphore. Usato sia per l'attività aziendale familiare che come lab personale di sicurezza.</div>
-                <div class="tags">
-                    <span class="tag">Proxmox</span><span class="tag">Shell</span><span class="tag">Infrastructure</span><span class="tag">Automation</span>
-                </div>
-            </div>
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">RE Firmware Monitor (Realtek RTD2525BE / 8051)</div><div class="entry-date">2026</div></div>
+            <div class="entry-desc">Dump della flash SPI di un monitor (CH341A), reverse engineering del firmware 8051 dello scaler in Ghidra e decodifica del bank-switching per inseguire un bug di luminosità all'avvio. Causa individuata in una catena di apply del backlight mai eseguita al boot; due patch hardware documentate con onestà, incluso un test no-op scoperto da me stesso.</div>
+            <div class="tags"><span class="tag">8051</span><span class="tag">Ghidra</span><span class="tag">SPI dump</span><span class="tag">Reverse Eng. Firmware</span></div>
         </div>
 
-        <!-- Istruzione -->
-        <div class="section">
-            <div class="section-title">Istruzione</div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">Laurea Magistrale — Informatica</div>
-                    <div class="entry-date">2023 – 2026</div>
-                </div>
-                <div class="entry-sub">Università degli Studi di Salerno · LM-18 · Curriculum Sicurezza Informatica</div>
-            </div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">Laurea Triennale — Informatica</div>
-                    <div class="entry-date">2020 – 2023</div>
-                </div>
-                <div class="entry-sub">Università degli Studi di Salerno</div>
-            </div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">Diploma — Scienze Applicate</div>
-                    <div class="entry-date">2016 – 2020</div>
-                </div>
-                <div class="entry-sub">Liceo Scientifico G. Galilei — Piedimonte Matese (CE)</div>
-            </div>
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">Teardown Tracker BLE XY Tag (RM1230)</div><div class="entry-date">2026</div></div>
+            <div class="entry-desc">Teardown hardware e firmware di un tracker BLE clone di AirTag: analisi del PCB, identificazione dei pad di debug, dump del firmware e analisi statica in Ghidra.</div>
+            <div class="tags"><span class="tag">BLE</span><span class="tag">Hardware RE</span><span class="tag">Ghidra</span><span class="repo"><a href="https://github.com/carloalbertogiordano/xytag-rm1230-teardown">↗ github</a></span></div>
         </div>
 
-        <!-- Privacy + firma -->
-        <div class="privacy">
-            <div class="privacy-text">Autorizzo il trattamento dei miei dati personali presenti nel CV ai sensi dell'art. 13 D.Lgs. 196/2003 e dell'art. 13 GDPR (Regolamento UE 2016/679).</div>
-            <div class="signature-box">
-                <div class="signature-line"></div>
-                <div class="signature-label">Carlo Alberto Giordano</div>
-            </div>
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">Mazda Firmware Decryption</div><div class="entry-date">2024</div></div>
+            <div class="entry-desc">Reverse engineering dell'aggiornamento firmware di un sistema infotainment Mazda: rotta la cifratura ZipCrypto tramite known-plaintext attack (bkcrack) e documentata l'intera procedura di decifrazione.</div>
+            <div class="tags"><span class="tag">Reverse Eng. Firmware</span><span class="tag">Crittoanalisi</span><span class="tag">ZipCrypto</span><span class="repo"><a href="https://github.com/carloalbertogiordano/Mazda-Firmware-Decryption">↗ github</a></span></div>
         </div>
 
-    </div><!-- /main -->
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">Binary Exploitation &amp; Mitigation (Nebula / Protostar)</div><div class="entry-date">2025</div></div>
+            <div class="entry-desc">Writeup di exploitation e di difesa sulle VM di training di exploit.education: ogni finding mappato a un CWE con attack tree, sfruttato (fino a uno stack overflow remoto → root) e poi corretto con codice C compilabile.</div>
+            <div class="tags"><span class="tag">Binary Exploitation</span><span class="tag">CWE</span><span class="tag">Secure Coding</span></div>
+        </div>
 
-</div><!-- /page -->
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">Fixedness — Data Privacy Auditing Framework (Tesi Magistrale)</div><div class="entry-date">2026</div></div>
+            <div class="entry-desc">Framework che misura il rischio di ricostruzione logica di record sensibili in dataset anonimizzati, via riduzione a SAT/SMT e detection di leak deterministici (co-NP UNSAT). Valutato su 10 tecniche di anonimizzazione. Sviluppato con il Prof. Ugo Fiore (UNISA). Paper in stesura — repository privato.</div>
+            <div class="tags"><span class="tag">Python</span><span class="tag">SAT/SMT</span><span class="tag">Data Privacy</span><span class="tag">Research</span></div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">OS Development</div><div class="entry-date">2023 – 2024</div></div>
+            <div class="entry-desc">Kernel bare-metal in C, Assembly x86 e Rust — bootloader, memory management, interrupt handling — sviluppati per comprendere le superfici di attacco a livello hardware.</div>
+            <div class="tags"><span class="tag">C</span><span class="tag">Assembly x86</span><span class="tag">Rust</span><span class="repo"><a href="https://github.com/carloalbertogiordano/myOS">↗ myOS</a> · <a href="https://github.com/carloalbertogiordano/nonameOS">nonameOS</a> · <a href="https://github.com/carloalbertogiordano/MyRustyOS">MyRustyOS</a></span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Competenze Tecniche</div>
+        <div class="grid2">
+            <div class="skill-row"><b>Reverse Engineering / Offensive</b></div>
+            <div class="skill-row"><b>Linguaggi</b></div>
+            <div class="skill-row"><span class="skill-lvl">elevato</span>Reverse Eng. Firmware · Ghidra · Hardware RE</div>
+            <div class="skill-row"><span class="skill-lvl">elevato</span>C · Python · Bash · Java</div>
+            <div class="skill-row"><span class="skill-lvl">buono</span>Binary exploitation · HID/BadUSB · Metasploit</div>
+            <div class="skill-row"><span class="skill-lvl">suff.</span>Assembly (x86) · Rust</div>
+            <div class="skill-row"><span class="skill-lvl">buono</span>Hashcat · John the Ripper · bkcrack · Volatility</div>
+            <div class="skill-row"><b>Infrastruttura</b></div>
+            <div class="skill-row"><span class="skill-lvl">suff.</span>Crittoanalisi · Wireshark · tcpdump</div>
+            <div class="skill-row"><span class="skill-lvl">elevato</span>Linux · Proxmox VE · PBS · TrueNAS</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Istruzione</div>
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">Laurea Magistrale — Informatica (curr. Sicurezza Informatica)</div><div class="entry-date">2023 – 2026</div></div>
+            <div class="entry-sub">Università degli Studi di Salerno · LM-18</div>
+        </div>
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">Laurea Triennale — Informatica</div><div class="entry-date">2020 – 2023</div></div>
+            <div class="entry-sub">Università degli Studi di Salerno</div>
+        </div>
+        <div class="entry">
+            <div class="entry-header"><div class="entry-title">Diploma — Scienze Applicate</div><div class="entry-date">2016 – 2020</div></div>
+            <div class="entry-sub">Liceo Scientifico G. Galilei — Piedimonte Matese (CE)</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Lingue · Certificazioni · Interessi</div>
+        <div class="meta-grid">
+            <div>
+                <h4>Lingue</h4>
+                <div class="line"><b>Italiano</b> — Madrelingua</div>
+                <div class="line"><b>Inglese</b> — C1 (Avanzato)</div>
+            </div>
+            <div>
+                <h4>Certificazioni</h4>
+                <div class="line">Certificato Inglese C1</div>
+                <div class="line" style="color:#90795f">Acquisito in Irlanda</div>
+            </div>
+            <div>
+                <h4>Interessi</h4>
+                <div class="line">Sicurezza embedded &amp; firmware</div>
+                <div class="line">Homelab · Track day in moto</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="privacy">Autorizzo il trattamento dei miei dati personali ai sensi dell'art. 13 GDPR (Reg. UE 2016/679) e del D.Lgs. 196/2003.</div>
+
+</div>
 </body>
 </html>
